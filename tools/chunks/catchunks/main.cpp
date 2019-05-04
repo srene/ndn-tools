@@ -217,11 +217,13 @@ main(int argc, char* argv[])
     std::ofstream statsFileRtt;
 
     if (pipelineType == "fixed") {
+        std::cout << "fixed" << std::endl;
       PipelineInterestsFixed::Options optionsPipeline(options);
       optionsPipeline.maxPipelineSize = maxPipelineSize;
       pipeline = make_unique<PipelineInterestsFixed>(face, optionsPipeline);
     }
     else if (pipelineType == "aimd" || pipelineType == "cubic") {
+        std::cout << "aimd" << std::endl;
       RttEstimator::Options optionsRttEst;
       optionsRttEst.isVerbose = options.isVerbose;
       optionsRttEst.alpha = rtoAlpha;
