@@ -420,7 +420,7 @@ PipelineInterestsAdaptive::printSummary() const
             << "Retransmitted segments: " << m_nRetransmitted
             << " (" << (m_nSent == 0 ? 0 : (static_cast<double>(m_nRetransmitted) / m_nSent * 100.0))  << "%)"
             << ", skipped: " << m_nSkippedRetx << "\n"
-            << "RTT ";*/
+            << "RTT ";
 
   if (m_rttEstimator.getMinRtt() == std::numeric_limits<double>::max() ||
       m_rttEstimator.getMaxRtt() == std::numeric_limits<double>::min()) {
@@ -431,7 +431,7 @@ PipelineInterestsAdaptive::printSummary() const
                                    << m_rttEstimator.getMinRtt() << "/"
                                    << m_rttEstimator.getAvgRtt() << "/"
                                    << m_rttEstimator.getMaxRtt() << " ms\n";
-  }
+  }*/
 }
 
 std::ostream&
