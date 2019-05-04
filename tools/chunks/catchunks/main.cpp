@@ -223,7 +223,7 @@ main(int argc, char* argv[])
       pipeline = make_unique<PipelineInterestsFixed>(face, optionsPipeline);
     }
     else if (pipelineType == "aimd" || pipelineType == "cubic") {
-        std::cout << "aimd" << std::endl;
+      //  std::cout << "aimd" << std::endl;
       RttEstimator::Options optionsRttEst;
       optionsRttEst.isVerbose = options.isVerbose;
       optionsRttEst.alpha = rtoAlpha;
