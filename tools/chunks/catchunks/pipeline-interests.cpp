@@ -139,7 +139,7 @@ PipelineInterests::printSummary() const
 
   double throughput = (8 * m_receivedSize * 1000) / timeElapsed.count();
 
-  std::cerr << m_prefix
+  std::cerr << m_prefix.get(1)
             << " Timeelapsed: " << timeElapsed
             << " Timetofirtchunk: " << timeToFirst
             << " Segmentsreceived: " << m_nReceived

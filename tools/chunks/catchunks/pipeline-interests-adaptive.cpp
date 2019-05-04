@@ -415,12 +415,12 @@ void
 PipelineInterestsAdaptive::printSummary() const
 {
   PipelineInterests::printSummary();
-  std::cerr << "Congestion marks: " << m_nCongMarks << " (caused " << m_nMarkDecr << " window decreases)\n"
+  /*std::cerr << "Congestion marks: " << m_nCongMarks << " (caused " << m_nMarkDecr << " window decreases)\n"
             << "Timeouts: " << m_nTimeouts << " (caused " << m_nLossDecr << " window decreases)\n"
             << "Retransmitted segments: " << m_nRetransmitted
             << " (" << (m_nSent == 0 ? 0 : (static_cast<double>(m_nRetransmitted) / m_nSent * 100.0))  << "%)"
             << ", skipped: " << m_nSkippedRetx << "\n"
-            << "RTT ";
+            << "RTT ";*/
 
   if (m_rttEstimator.getMinRtt() == std::numeric_limits<double>::max() ||
       m_rttEstimator.getMaxRtt() == std::numeric_limits<double>::min()) {
