@@ -87,6 +87,12 @@ protected:
     return m_startTime;
   }
 
+    time::steady_clock::TimePoint
+    getFirstChunkTime() const
+   {
+        return m_firstTime;
+  }
+    
   bool
   isStopping() const
   {
@@ -163,7 +169,7 @@ private:
   DataCallback m_onData;
   FailureCallback m_onFailure;
   uint64_t m_nextSegmentNo;
-  time::steady_clock::TimePoint m_startTime;
+  time::steady_clock::TimePoint m_startTime, m_firstTime;
   bool m_isStopping;
 };
 

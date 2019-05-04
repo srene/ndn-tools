@@ -89,6 +89,7 @@ void
 PipelineInterests::onData(const Data& data)
 {
   m_nReceived++;
+  if(m_nReceived==1)m_firstTime = time::steady_clock::now();
   m_receivedSize += data.getContent().value_size();
 
   m_onData(data);
@@ -109,11 +110,11 @@ PipelineInterests::onFailure(const std::string& reason)
 std::string
 PipelineInterests::formatThroughput(double throughput)
 {
-  int pow = 0;
-  while (throughput >= 1000.0 && pow < 4) {
+  int pow = 1;
+  /*while (throughput >= 1000.0 && pow < 4) {
     throughput /= 1000.0;
     pow++;
-  }
+  }*/
   switch (pow) {
     case 0:
       return to_string(throughput) + " bit/s";
@@ -134,12 +135,15 @@ PipelineInterests::printSummary() const
 {
   using namespace ndn::time;
   duration<double, milliseconds::period> timeElapsed = steady_clock::now() - getStartTime();
+  duration<double, milliseconds::period> timeToFirst = getFirstChunkTime() - getStartTime();
+
   double throughput = (8 * m_receivedSize * 1000) / timeElapsed.count();
 
   std::cerr << "\n\nAll segments have been received.\n"
             << "Time elapsed: " << timeElapsed << "\n"
+            << "Time to firt chunk: " << timeToFirst << "\n"
             << "Segments received: " << m_nReceived << "\n"
-            << "Total size: " << static_cast<double>(m_receivedSize) / 1000 << "kB" << "\n"
+            << "Total size: " << static_cast<double>(m_receivedSize)  << "bytes" << "\n"
             << "Goodput: " << formatThroughput(throughput) << "\n";
 }
 
