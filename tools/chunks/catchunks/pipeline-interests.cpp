@@ -139,12 +139,12 @@ PipelineInterests::printSummary() const
 
   double throughput = (8 * m_receivedSize * 1000) / timeElapsed.count();
 
-  std::cerr << "\n\nAll segments have been received.\n"
-            << "Time elapsed: " << timeElapsed << "\n"
-            << "Time to firt chunk: " << timeToFirst << "\n"
-            << "Segments received: " << m_nReceived << "\n"
-            << "Total size: " << static_cast<double>(m_receivedSize)  << "bytes" << "\n"
-            << "Goodput: " << formatThroughput(throughput) << "\n";
+  std::cerr << m_prefix
+            << " Timeelapsed: " << timeElapsed
+            << " Timetofirtchunk: " << timeToFirst
+            << " Segmentsreceived: " << m_nReceived
+            << " Totalsize: " << static_cast<double>(m_receivedSize)  << " bytes "
+            << " Goodput: " << formatThroughput(throughput) << "\n";
 }
 
 } // namespace chunks
